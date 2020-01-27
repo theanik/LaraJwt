@@ -37,6 +37,23 @@ class ProductController extends Controller
         
     }
 
+    public function showProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        if ($product){
+            return response()->json([
+                'success' => true,
+                'product' => $product,
+                'user' => $product->user
+            ],200 );
+        }else{
+            return response()->json([
+                'success' => flase,
+                'message' => 'Something went wrong!!'
+            ],400);
+        }
+    }
+
     public function store(Request $req)
     {
         $req->validate([

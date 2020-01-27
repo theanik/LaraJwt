@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 class Product extends Model
 {
-    public function products()
+    public function user()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsToMany(User::class,'user_id');
+        
     }
 }
